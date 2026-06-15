@@ -1,0 +1,20 @@
+apiVersion: v1
+binaryData:
+  1.secret: MDNjN2JiZDQ5Nzg0MmEyMzA4NzhmMGVjNmQyMGY1NWFmZjU0NDE2ZDMzMDNiNmU2Y2VjNjcxNDgzZDg4NmI1OA==
+  1.share: oIpXaZd+hqVGeY+qBOcW8C+afJXpOim4stMw0iJbpTaGiRQQHWL1yxQhC5toA67QHAZil9uz7wne9JvVvf4WEqPsVNMUFUBeqaNV7OExAAAApLYaIdQ9u0BBZMTlEKpPINaiBjwfS+Ng8R87vDxep3z3XsqOfPu9WsXYnEZ6nklI6g==
+  2.secret: YWUxZWRhMzQyYTEwMDA2MTUxODUxNTNkYWM0ODI3OGNjMWQ5NzM4MTBhMjgzOTRiM2EyYzJjNTIxYjY5ZTViZQ==
+  2.share: wEuwoaTCvinXJhskBMirfkdUIDspGKAj9ESPf8aqQqFQXLeFTX3dk3oTeB+NHSxApdpmHMhTR76eKGLSQUoM/Wx38zaWuUxDYxIbDaExAAAAskrlEwZaWZlvs/LQHUU9b38ve+0t6P+qKEwmXliYz/10pGU0OrCH8AbUk8fuXkCfUQ==
+  operator-1-dev-tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-1781544873.approval: MzQ0NmVhZTE0NDg2NGUxZjlkZDQ4NDY3Y2NmMDk2YWVkZTgwNWM3YjRkMTY3MWNiYThkZDEzMjA4ZjE0N2MzOGVlMWNkMTY5ZTA2NTJkMzU0OGJiZWVjZjk3ZGZhMTAxODg2OWY1ODg4MjNmN2EyMTdiYTZmOTM5YjcxMGQ1ZTQ=
+  operator-1.pub: MDQwZDU0MDlkZmJkYjhhZDJhN2ZiYTExZDE2ZTJkYzQxOTZkM2MyZmMzZDY5MjZiNDViOGE2MzdkNDM3NTUyNzhjNWZiNzNmZjJmMzg2ZmZiNTJlNjZhMDRjYzFkNDZlNzk0MDdlNmU2ZjVhY2Q4NmU2Y2I1NTBhZjM3ZDE1MmM0NDA0YjU3ZDA3OTQxZWVkZjcwM2Q0OGJmYzFjYjhhODUyZDJhNTIyMzE0YTgwYzhmZTZhMjQxOWZiZDAzZTY3ZjczYjFmZmRiMzM4ZDRmMDU3MmRlNjFkM2QwOWRmODc2ZDI5NTgyOWRlOTFjZDNjNmU3ZGI4YjMyMDNkZjkyYWM4MjE=
+  quorum_threshold: MQ==
+data:
+  pcr3_preimage: arn:aws:iam::361645878370:role/talos-worker
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62
+    qos.turnkey.io: app
+    qos.turnkey.io/app: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62
+    turnkey.io/release: deploy-07e1a643-4069-44f9-8b90-81f04cb1bfb0
+  name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-manifest-set-deploy-07e1a643-4069-44f9-8b90-81f04cb1bfb0
+  namespace: tvc-apps

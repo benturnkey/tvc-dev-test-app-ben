@@ -1,0 +1,86 @@
+apiVersion: enclaves.turnkey.io/v1alpha1
+kind: EnclaveSet
+metadata:
+  finalizers:
+  - enclaves.turnkey.io/enclaverelease-finalizer
+  name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62
+  namespace: tvc-apps
+spec:
+  creation:
+    dryRun: false
+    requeueSeconds: 20
+  deletion:
+    dryRun: false
+    requeueSeconds: 20
+    strategy: timeBased
+    timeBased:
+      force: false
+      idleWindow: 1h
+  enclaveVersionSets:
+    tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62:
+      targetDeployment: deploy-af286a3f-0cd8-42b1-b42b-6bd13ce434de
+      versions:
+      - CID: 990
+        bootstrap: true
+        hostFilename: /qos_bridge
+        images:
+        - image: 799078726966.dkr.ecr.us-east-1.amazonaws.com/tkhq/enclave_boot:pr-6781@sha256:ffc3d60d3adf937972eec0f71595b1177b4d2e994331ed7be91c9871fe095b01
+          name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-enclave-boot
+        - healthCheckPort: 3000
+          healthCheckType: http
+          image: 799078726966.dkr.ecr.us-east-1.amazonaws.com/tkhq/qos_bridge:v2026.2.6@sha256:228c9f3f8e7f3595c9ee9ca66aef7379a06f8ffd3a323e08c71844c202635efd
+          name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-qos-bridge
+          publicIngressPort: 3000
+        - image: ghcr.io/tkhq/helloworld:latest@sha256:c9c18f78b05d29ebfc2c60ab7143df4b0a808765a34d6a88bbf99523f473cafd
+          name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-pivot
+        - image: 799078726966.dkr.ecr.us-east-1.amazonaws.com/tkhq/qos_enclave:v2026.2.6@sha256:2e0d89115f3fc97ce955f47766402c15b506aa9bf3edbefc7f2f4a73a2b485ae
+          name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-qos-enclave
+        - image: 799078726966.dkr.ecr.us-east-1.amazonaws.com/tkhq/qos_host:v2026.2.6@sha256:9a65d174dc37a0fe506677d880106f63360157666d2536cf7c0c38719f5ae0bc
+          name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-qos-host
+        noncePolicy: none
+        pivotFilename: /tvc_app
+        replicas: 3
+        version: deploy-07e1a643-4069-44f9-8b90-81f04cb1bfb0
+      - CID: 990
+        bootstrap: true
+        hostFilename: /qos_bridge
+        images:
+        - image: 799078726966.dkr.ecr.us-east-1.amazonaws.com/tkhq/enclave_boot:pr-6781@sha256:ffc3d60d3adf937972eec0f71595b1177b4d2e994331ed7be91c9871fe095b01
+          name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-enclave-boot
+        - healthCheckPort: 3000
+          healthCheckType: http
+          image: 799078726966.dkr.ecr.us-east-1.amazonaws.com/tkhq/qos_bridge:v2026.2.6@sha256:228c9f3f8e7f3595c9ee9ca66aef7379a06f8ffd3a323e08c71844c202635efd
+          name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-qos-bridge
+          publicIngressPort: 3000
+        - image: ghcr.io/tkhq/helloworld:latest@sha256:c9c18f78b05d29ebfc2c60ab7143df4b0a808765a34d6a88bbf99523f473cafd
+          name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-pivot
+        - image: 799078726966.dkr.ecr.us-east-1.amazonaws.com/tkhq/qos_enclave:v2026.2.6@sha256:2e0d89115f3fc97ce955f47766402c15b506aa9bf3edbefc7f2f4a73a2b485ae
+          name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-qos-enclave
+        - image: 799078726966.dkr.ecr.us-east-1.amazonaws.com/tkhq/qos_host:v2026.2.6@sha256:9a65d174dc37a0fe506677d880106f63360157666d2536cf7c0c38719f5ae0bc
+          name: tvc-app-86efba30-c02b-4cd4-acf8-94af810b8e62-qos-host
+        noncePolicy: none
+        pivotFilename: /tvc_app
+        replicas: 3
+        version: deploy-af286a3f-0cd8-42b1-b42b-6bd13ce434de
+  ingressHostnames:
+  - app-86efba30-c02b-4cd4-acf8-94af810b8e62.tvc.dev.turnkey.engineering
+  patch:
+    dryRun: false
+    requeueSeconds: 20
+  scaleDown:
+    autoscaling:
+      externalMetricName: max_enclave_pod_rps
+      maxReplicas: 3
+      minReplicas: 1
+      stabilizationWindowSecondsScaleDown: 0
+      stabilizationWindowSecondsScaleUp: 0
+      targetValue: 99999
+    dryRun: false
+    requeueSeconds: 20
+    strategy: timeBased
+    timeBased:
+      force: false
+      idleWindow: 5m
+  traffic:
+    dryRun: false
+    preconditions: []
