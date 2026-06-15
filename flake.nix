@@ -42,7 +42,15 @@
             ] ++ darwinFrameworks;
 
             shellHook = ''
-              echo "Rust dev shell ready. Run: cargo install tvc"
+              export CARGO_INSTALL_ROOT="''${CARGO_INSTALL_ROOT:-$HOME/.cargo}"
+              export PATH="$CARGO_INSTALL_ROOT/bin:$PATH"
+
+              if ! command -v tvc >/dev/null 2>&1; then
+                echo "Installing tvc with cargo..."
+                cargo install tvc
+              fi
+
+              echo "Rust dev shell ready."
             '';
           };
         });
